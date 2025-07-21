@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanctuary Fitness - Your Safe Space to Shine</title>
+    <style>
+        /* CSS Custom Properties */
+        :root {
+            --color-rose-strength: #D4669A;
+            --color-soft-empowerment: #F2C2D4;
+            --color-deep-trust: #8B4A6B;
+            --color-warm-ivory: #FAF7F5;
+            --color-stone-comfort: #E8E2DD;
+            --color-charcoal-gentle: #4A4A4A;
+            --color-whisper-gray: #8F8F8F;
+            --color-success-bloom: #7FB069;
+            --color-warning-sunset: #FFB347;
+            --color-error-rose: #E17B7B;
+            
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-xxl: 48px;
+            --spacing-xxxl: 64px;
+            
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 16px;
+            --border-radius-full: 28px;
+            
+            --shadow-subtle: 0 2px 20px rgba(0, 0, 0, 0.08);
+            --shadow-button: 0 4px 12px rgba(212, 102, 154, 0.3);
+            
+            --font-size-hero: clamp(36px, 5vw, 48px);
+            --font-size-h2: 36px;
+            --font-size-h3: 24px;
+            --font-size-body-lg: 18px;
+            --font-size-body: 16px;
+            --font-size-small: 14px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-warm-ivory);
+            color: var(--color-charcoal-gentle);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: var(--spacing-lg) 0;
+            box-shadow: var(--shadow-subtle);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-xxl);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: var(--font-size-h3);
+            font-weight: 600;
+            color: var(--color-rose-strength);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-xl);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--color-charcoal-gentle);
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--color-rose-strength);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--color-rose-strength);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--color-rose-strength);
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border: none;
+            border-radius: var(--border-radius-full);
+            font-size: var(--font-size-body);
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 160px;
+        }
+
+        .btn-primary {
+            background: var(--color-rose-strength);
+            color: white;
+            box-shadow: var(--shadow-button);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            background: var(--color-deep-trust);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-rose-strength);
+            border: 2px solid var(--color-rose-strength);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-soft-empowerment);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 var(--spacing-xxxl);
+            position: relative;
+            background: linear-gradient(135deg, var(--color-warm-ivory) 0%, var(--color-stone-comfort) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -10%;
+            width: 400px;
+            height: 300px;
+            background: var(--color-soft-empowerment);
+            border-radius: 50% 30% 40% 60%;
+            opacity: 0.3;
+            transform: rotate(15deg);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: -5%;
+            width: 300px;
+            height: 200px;
+            background: var(--color-soft-empowerment);
+            border-radius: 40% 60% 30% 50%;
+            opacity: 0.2;
+            transform: rotate(-20deg);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-xxl);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xxxl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: var(--font-size-hero);
+            font-weight: 600;
+            color: var(--color-rose-strength);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: var(--font-size-body-lg);
+            color: var(--color-charcoal-gentle);
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .hero-image {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            font-size: var(--font-size-body-lg);
+            color: var(--color-whisper-gray);
+            text-align: center;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: var(--spacing-xxxl) 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-xxl);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xxxl);
+        }
+
+        .section-header h2 {
+            font-size: var(--font-size-h2);
+            color: var(--color-deep-trust);
+            font-weight: 500;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-header p {
+            font-size: var(--font-size-body-lg);
+            color: var(--color-whisper-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .trust-card {
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid var(--color-stone-comfort);
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .trust-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--color-soft-empowerment);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+            font-size: 24px;
+            color: var(--color-rose-strength);
+        }
+
+        .trust-card h3 {
+            font-size: var(--font-size-h3);
+            color: var(--color-deep-trust);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .trust-card p {
+            color: var(--color-whisper-gray);
+            line-height: 1.6;
+        }
+
+        /* Application Section */
+        .application-section {
+            padding: var(--spacing-xxxl) 0;
+            background: var(--color-stone-comfort);
+            position: relative;
+        }
+
+        .application-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-xxl);
+        }
+
+        .application-form {
+            background: white;
+            padding: var(--spacing-xxl);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .progress-meter {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--color-stone-comfort);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-sm);
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .progress-circle {
+            background: var(--color-rose-strength);
+            color: white;
+        }
+
+        .progress-step.completed .progress-circle {
+            background: var(--color-success-bloom);
+            color: white;
+        }
+
+        .progress-label {
+            font-size: var(--font-size-small);
+            color: var(--color-whisper-gray);
+            text-align: center;
+            max-width: 80px;
+        }
+
+        .progress-step.active .progress-label {
+            color: var(--color-rose-strength);
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-label {
+            display: block;
+            font-size: var(--font-size-small);
+            font-weight: 500;
+            color: var(--color-deep-trust);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: 2px solid var(--color-stone-comfort);
+            border-radius: var(--border-radius-md);
+            font-size: var(--font-size-body);
+            color: var(--color-charcoal-gentle);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-rose-strength);
+            box-shadow: 0 0 0 3px rgba(212, 102, 154, 0.1);
+        }
+
+        .form-input.error {
+            border-color: var(--color-error-rose);
+            animation: shake 0.3s ease-in-out;
+        }
+
+        .form-input.success {
+            border-color: var(--color-success-bloom);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+        }
+
+        .checkbox-label {
+            font-size: var(--font-size-small);
+            color: var(--color-charcoal-gentle);
+            line-height: 1.5;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: var(--spacing-xxxl) 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .testimonial-card {
+            background: var(--color-warm-ivory);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--color-rose-strength);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: var(--font-size-body-lg);
+            color: var(--color-charcoal-gentle);
+            font-style: italic;
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 500;
+            color: var(--color-deep-trust);
+        }
+
+        .testimonial-role {
+            font-size: var(--font-size-small);
+            color: var(--color-whisper-gray);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-deep-trust);
+            color: white;
+            padding: var(--spacing-xxxl) 0 var(--spacing-xl);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-xxl);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .footer-section h3 {
+            color: var(--color-soft-empowerment);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-soft-empowerment);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-container,
+            .container,
+            .application-container {
+                padding: 0 var(--spacing-lg);
+            }
+
+            .trust-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .application-form {
+                padding: var(--spacing-lg);
+            }
+
+            .progress-meter {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Accessibility */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">Sanctuary Fitness</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#membership" class="nav-link">Membership</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Your Safe Space to Shine</h1>
+                <p>Join a community where you can be authentically yourself. Our women-only gym is designed as your sanctuary—a place to grow stronger without judgment, surrounded by sisters who lift each other up.</p>
+                <div class="hero-cta">
+                    <a href="#application" class="btn btn-primary">Apply for Membership</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div>
+                    <h3>Empowering Women</h3>
+                    <p>Beautiful imagery of diverse women working out joyfully would be placed here</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Women Choose Sanctuary</h2>
+                <p>We've created more than a gym—we've built a community where every woman feels safe, supported, and celebrated.</p>
+            </div>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon">🔒</div>
+                    <h3>Verified Women Only</h3>
+                    <p>Our thorough verification process ensures a completely safe space where you never have to worry about unwanted attention or judgment.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">💪</div>
+                    <h3>Supportive Community</h3>
+                    <p>Connect with like-minded women who celebrate your victories and support you through challenges. No competition, just encouragement.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">✨</div>
+                    <h3>Be Authentically You</h3>
+                    <p>Work out in comfortable clothes, without makeup, however feels right to you. This is your space to focus purely on your health and happiness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Section -->
+    <section class="application-section" id="application">
+        <div class="application-container">
+            <div class="section-header">
+                <h2>Join Our Community</h2>
+                <p>Take the first step toward your strongest, most confident self.</p>
+            </div>
+            <div class="application-form">
+                <div class="progress-meter">
+                    <div class="progress-step active">
+                        <div class="progress-circle">1</div>
+                        <div class="progress-label">Personal Info</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="progress-circle">2</div>
+                        <div class="progress-label">Verification</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="progress-circle">3</div>
+                        <div class="progress-label">Welcome!</div>
+                    </div>
+                </div>
+
+                <form id="applicationForm">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthDate" class="form-label">Date of Birth *</label>
+                        <input type="date" id="birthDate" name="birthDate" class="form-input" required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="verification" name="verification" class="checkbox" required>
+                        <label for="verification" class="checkbox-label">
+                            I confirm that I am a woman and understand that verification will be required to maintain the safety and integrity of our women-only space. I consent to the verification process as outlined in your privacy policy.
+                        </label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" class="checkbox" required>
+                        <label for="terms" class="checkbox-label">
+                            I agree to the Terms of Service and Privacy Policy, and I'm excited to join this supportive community of strong women.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 24px;">
+                        Submit Application
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Stories from Our Community</h2>
+                <p>Hear from the amazing women who call Sanctuary home.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" onclick="handleTestimonialClick('Sarah Mmuledi')">
+                    <div class="testimonial-quote">
+                        "For the first time in years, I actually look forward to working out. There's no judgment here, just genuine support from incredible women who understand the journey."
+                    </div>
+                    <div class="testimonial-author">Sarah Mmuledi.</div>
+                    <div class="testimonial-role">Member since 2023</div>
+                </div>
+                <div class="testimonial-card" onclick="handleTestimonialClick('Jessica Lukaku')">
+                    <div class="testimonial-quote">
+                        "The verification process made me feel so secure. Knowing that everyone here has been thoughtfully welcomed into this space creates such a beautiful, trusting environment."
+                    </div>
+                    <div class="testimonial-author">Jessica Lukaku.</div>
+                    <div class="testimonial-role">Member since 2022</div>
+                </div>
+                <div class="testimonial-card" onclick="handleTestimonialClick('Maria Roland')">
+                    <div class="testimonial-quote">
+                        "I've never felt stronger—not just physically, but emotionally. This community has become my second family, and I've grown in ways I never expected."
+                    </div>
+                    <div class="testimonial-author">Maria Roland.</div>
+                    <div class="testimonial-role">Member since 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Sanctuary Fitness</h3>
+                <p>Your safe space to shine. Building a community where women support women in becoming their strongest, most confident selves.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#home">Home</a></p>
+                <p><a href="#about">About</a></p>
+                <p><a href="#membership">Membership</a></p>
+                <p><a href="#contact">Contact</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>123 Empowerment Street<br>Pretoria, Gauteng</p>
+                <p onclick="handleContactClick()">Phone: (+27) 8277713</p>
+                <p onclick="handleContactClick()">Email: hello@sanctuaryfitness.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form validation and interaction
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const formData = new FormData(e.target);
+            const requiredFields = ['fullName', 'email', 'phone', 'birthDate'];
+            let isValid = true;
+            
+            // Reset all field states
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.classList.remove('error', 'success');
+            });
+            
+            // Validate required fields
+            requiredFields.forEach(field => {
+                const input = document.getElementById(field);
+                if (!formData.get(field) || formData.get(field).trim() === '') {
+                    input.classList.add('error');
+                    isValid = false;
+                } else {
+                    input.classList.add('success');
+                }
+            });
+            
+            // Check checkboxes
+            const verification = document.getElementById('verification');
+            const terms = document.getElementById('terms');
+            
+            if (!verification.checked || !terms.checked) {
+                isValid = false;
+                alert('Please confirm both verification and terms agreement.');
+            }
+            
+            if (isValid) {
+                // Simulate progression through steps
+                setTimeout(() => {
+                    const steps = document.querySelectorAll('.progress-step');
+                    steps[0].classList.add('completed');
+                    steps[0].classList.remove('active');
+                    steps[1].classList.add('active');
+                    
+                    setTimeout(() => {
+                        steps[1].classList.add('completed');
+                        steps[1].classList.remove('active');
+                        steps[2].classList.add('active');
+                        alert('Application submitted successfully! Welcome to the Sanctuary Fitness community. You will receive verification instructions via email within 24 hours.');
+                    }, 1500);
+                }, 1000);
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = 'none';
+            } else {
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.width = '100%';
+                navMenu.style.background = 'white';
+                navMenu.style.boxShadow = 'var(--shadow-subtle)';
+                navMenu.style.padding = 'var(--spacing-lg)';
+            }
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.trust-card, .testimonial-card, .section-header').forEach(el => {
+            observer.observe(el);
+        });
+
+        function handleTestimonialClick(author) {
+    alert('You clicked on testimonial by ' + author);
+}
+
+function handleContactClick() {
+    alert('Contact us at hello@sanctuaryfitness.com or (555) 123-SAFE');
+}
+    </script>
+</body>
+</html>
